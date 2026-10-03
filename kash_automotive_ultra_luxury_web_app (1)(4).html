@@ -1,0 +1,715 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KASH Automotive | Ultra-Luxury Showroom</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Playfair Display & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            DEFAULT: '#D4AF37',
+                            light: '#F3E5AB',
+                            dark: '#AA8C2C',
+                            metallic: '#C5A059'
+                        },
+                        dark: {
+                            DEFAULT: '#0a0a0a',
+                            card: '#121212',
+                            border: '#262626',
+                            muted: '#737373'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #050505;
+            color: #e5e5e5;
+            font-family: 'Inter', sans-serif;
+        }
+        .gold-gradient {
+            background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 50%, #AA8C2C 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-btn {
+            background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 50%, #AA8C2C 100%);
+            color: #050505;
+            transition: all 0.3s ease;
+        }
+        .gold-btn:hover {
+            opacity: 0.9;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+            transform: translateY(-2px);
+        }
+        .gold-border {
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        .gold-border:hover {
+            border-color: rgba(212, 175, 55, 0.8);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #262626;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4AF37;
+        }
+    </style>
+</head>
+<body class="bg-dark text-gray-100 antialiased selection:bg-gold selection:text-black">
+
+    <!-- Navigation Header -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-dark/90 backdrop-blur-md border-b border-dark-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <a href="#" class="flex flex-col">
+                    <span class="font-serif text-2xl font-bold tracking-widest gold-gradient">KASH</span>
+                    <span class="text-[9px] tracking-[0.3em] text-gold-light uppercase font-semibold">Automotive</span>
+                </a>
+            </div>
+            
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#showroom" class="text-gray-300 hover:text-gold transition-colors">Showroom</a>
+                <a href="#inventory" class="text-gray-300 hover:text-gold transition-colors">Collection</a>
+                <a href="#configurator" class="text-gray-300 hover:text-gold transition-colors">Bespoke Studio</a>
+                <a href="#experience" class="text-gray-300 hover:text-gold transition-colors">VIP Lounge</a>
+                <a href="#contact" class="text-gray-300 hover:text-gold transition-colors">Concierge</a>
+            </nav>
+
+            <div class="flex items-center space-x-4">
+                <button onclick="openWhatsAppInquiry('General VIP Inquiry')" class="hidden sm:inline-flex items-center space-x-2 px-5 py-2.5 rounded-full gold-btn font-semibold text-xs tracking-wider uppercase">
+                    <i class="fab fa-whatsapp text-sm"></i>
+                    <span>VIP Concierge</span>
+                </button>
+                <button id="mobileMenuBtn" class="md:hidden text-gray-300 hover:text-gold text-xl p-2">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-dark-card border-b border-dark-border px-4 pt-2 pb-6 space-y-3">
+            <a href="#showroom" class="block py-2 text-gray-300 hover:text-gold">Showroom</a>
+            <a href="#inventory" class="block py-2 text-gray-300 hover:text-gold">Collection</a>
+            <a href="#configurator" class="block py-2 text-gray-300 hover:text-gold">Bespoke Studio</a>
+            <a href="#experience" class="block py-2 text-gray-300 hover:text-gold">VIP Lounge</a>
+            <a href="#contact" class="block py-2 text-gray-300 hover:text-gold">Concierge</a>
+            <button onclick="openWhatsAppInquiry('General VIP Inquiry')" class="w-full mt-2 py-3 rounded-lg gold-btn font-semibold text-xs uppercase tracking-wider">
+                <i class="fab fa-whatsapp mr-2"></i> WhatsApp VIP Concierge
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="showroom" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Background Overlay with High-End Automotive Imagery -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&q=80&w=2000" alt="Luxury Showroom" class="w-full h-full object-cover object-center opacity-35 filter brightness-75 scale-105 animate-pulse transition-transform duration-10000">
+            <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/60 to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-24">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-gold text-xs font-semibold uppercase tracking-[0.3em] mb-6">
+                The Pinnacle of Automotive Prestige
+            </span>
+            <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8">
+                Uncompromising <br><span class="gold-gradient">Luxury & Power</span>
+            </h1>
+            <p class="max-w-2xl mx-auto text-gray-400 text-base sm:text-lg md:text-xl font-light mb-10 leading-relaxed">
+                Step inside KASH Automotive. Curating the world's most elite supercars, bespoke SUVs, and executive sedans for discerning collectors.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#inventory" class="w-full sm:w-auto px-8 py-4 rounded-full gold-btn font-semibold text-sm tracking-wider uppercase shadow-lg shadow-gold/20">
+                    Explore Inventory
+                </a>
+                <a href="#configurator" class="w-full sm:w-auto px-8 py-4 rounded-full bg-dark-card border border-dark-border hover:border-gold text-gray-200 hover:text-gold font-semibold text-sm tracking-wider uppercase transition-all">
+                    Custom Configurator
+                </a>
+            </div>
+
+            <!-- Quick stats bar -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mt-20 pt-10 border-t border-dark-border/80">
+                <div class="text-center">
+                    <div class="font-serif text-3xl font-bold gold-gradient">15+</div>
+                    <div class="text-xs text-dark-muted uppercase tracking-wider mt-1">Global Showrooms</div>
+                </div>
+                <div class="text-center">
+                    <div class="font-serif text-3xl font-bold gold-gradient">0-100</div>
+                    <div class="text-xs text-dark-muted uppercase tracking-wider mt-1">Verified Authenticity</div>
+                </div>
+                <div class="text-center">
+                    <div class="font-serif text-3xl font-bold gold-gradient">24/7</div>
+                    <div class="text-xs text-dark-muted uppercase tracking-wider mt-1">Private Concierge</div>
+                </div>
+                <div class="text-center">
+                    <div class="font-serif text-3xl font-bold gold-gradient">100%</div>
+                    <div class="text-xs text-dark-muted uppercase tracking-wider mt-1">Bespoke Tailoring</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Inventory Section -->
+    <section id="inventory" class="py-28 bg-dark/50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+                <div>
+                    <span class="text-gold text-xs font-semibold uppercase tracking-[0.2em] mb-3 block">Exclusive Fleet</span>
+                    <h2 class="font-serif text-3xl sm:text-5xl font-bold">The Showroom Collection</h2>
+                </div>
+                
+                <!-- Category Filter Buttons -->
+                <div class="flex flex-wrap gap-2 mt-6 md:mt-0 bg-dark-card p-1.5 rounded-full border border-dark-border">
+                    <button onclick="filterInventory('all')" id="filter-all" class="filter-btn px-6 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-gold text-black transition-all">All</button>
+                    <button onclick="filterInventory('supercar')" id="filter-supercar" class="filter-btn px-6 py-2 rounded-full text-xs font-semibold uppercase tracking-wider text-gray-400 hover:text-white transition-all">Supercars</button>
+                    <button onclick="filterInventory('suv')" id="filter-suv" class="filter-btn px-6 py-2 rounded-full text-xs font-semibold uppercase tracking-wider text-gray-400 hover:text-white transition-all">SUVs</button>
+                    <button onclick="filterInventory('sedan')" id="filter-sedan" class="filter-btn px-6 py-2 rounded-full text-xs font-semibold uppercase tracking-wider text-gray-400 hover:text-white transition-all">Sedans</button>
+                </div>
+            </div>
+
+            <!-- Inventory Grid -->
+            <div id="inventory-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Cards will be injected dynamically via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Bespoke Configurator Studio -->
+    <section id="configurator" class="py-28 bg-dark relative overflow-hidden border-t border-dark-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-gold text-xs font-semibold uppercase tracking-[0.2em] mb-3 block">Bespoke Studio</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold mb-4">Custom Build Configurator</h2>
+                <p class="text-gray-400 font-light">Tailor your dream machine in real time. Choose your model, exterior finish, and custom wheels to match your refined aesthetic.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center bg-dark-card border border-dark-border rounded-3xl p-6 sm:p-10 shadow-2xl">
+                <!-- Visual Preview Area -->
+                <div class="lg:col-span-7 flex flex-col items-center">
+                    <div class="relative w-full h-[320px] sm:h-[450px] rounded-2xl overflow-hidden border border-dark-border bg-black/60 flex items-center justify-center p-4">
+                        <img id="config-car-img" src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&q=80&w=1200" alt="Configured Car" class="w-full h-full object-cover rounded-xl transition-all duration-700 filter brightness-95">
+                        
+                        <!-- Overlay badges -->
+                        <div class="absolute top-4 left-4 bg-black/70 backdrop-blur-md px-4 py-2 rounded-full border border-gold/30 text-xs font-semibold text-gold tracking-widest uppercase">
+                            <span id="preview-model-badge">Porsche 911 GT3 RS</span>
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-black/70 backdrop-blur-md px-4 py-2 rounded-full border border-dark-border text-xs text-gray-300">
+                            Estimated Price: <span id="config-price" class="font-bold text-gold">$345,000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controls Area -->
+                <div class="lg:col-span-5 space-y-8">
+                    <!-- Model Selection -->
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">1. Select Base Model</label>
+                        <div class="grid grid-cols-2 gap-3">
+                            <button onclick="updateConfigModel('porsche')" id="model-btn-porsche" class="config-model-btn p-3 rounded-xl border border-gold bg-gold/10 text-left transition-all">
+                                <div class="font-semibold text-sm text-white">Porsche GT3 RS</div>
+                                <div class="text-xs text-gold mt-1">$345,000</div>
+                            </button>
+                            <button onclick="updateConfigModel('bmw')" id="model-btn-bmw" class="config-model-btn p-3 rounded-xl border border-dark-border bg-dark text-left transition-all hover:border-gold/50">
+                                <div class="font-semibold text-sm text-white">BMW M4 Competition</div>
+                                <div class="text-xs text-gold mt-1">$125,000</div>
+                            </button>
+                            <button onclick="updateConfigModel('mercedes')" id="model-btn-mercedes" class="config-model-btn p-3 rounded-xl border border-dark-border bg-dark text-left transition-all hover:border-gold/50">
+                                <div class="font-semibold text-sm text-white">Mercedes G63 AMG</div>
+                                <div class="text-xs text-gold mt-1">$220,000</div>
+                            </button>
+                            <button onclick="updateConfigModel('audi')" id="model-btn-audi" class="config-model-btn p-3 rounded-xl border border-dark-border bg-dark text-left transition-all hover:border-gold/50">
+                                <div class="font-semibold text-sm text-white">Audi RS7 Sportback</div>
+                                <div class="text-xs text-gold mt-1">$142,000</div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Color Selection -->
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">2. Exterior Finish</label>
+                        <div class="flex items-center space-x-4">
+                            <button onclick="updateConfigColor('guards-red', '#C41E3A')" class="w-10 h-10 rounded-full bg-red-600 border-2 border-gold shadow-lg transform hover:scale-110 transition-transform" title="Guards Red"></button>
+                            <button onclick="updateConfigColor('midnight-black', '#111111')" class="w-10 h-10 rounded-full bg-black border-2 border-dark-border shadow-lg transform hover:scale-110 transition-transform" title="Midnight Black"></button>
+                            <button onclick="updateConfigColor('chalk-grey', '#E0E0E0')" class="w-10 h-10 rounded-full bg-gray-300 border-2 border-dark-border shadow-lg transform hover:scale-110 transition-transform" title="Chalk Grey"></button>
+                            <button onclick="updateConfigColor('british-racing-green', '#004225')" class="w-10 h-10 rounded-full bg-emerald-900 border-2 border-dark-border shadow-lg transform hover:scale-110 transition-transform" title="Racing Green"></button>
+                            <button onclick="updateConfigColor('frozen-blue', '#4B9CD3')" class="w-10 h-10 rounded-full bg-blue-500 border-2 border-dark-border shadow-lg transform hover:scale-110 transition-transform" title="Frozen Blue"></button>
+                        </div>
+                    </div>
+
+                    <!-- Interior Trim -->
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">3. Interior Leather Trim</label>
+                        <select id="config-interior" class="w-full bg-dark border border-dark-border rounded-xl px-4 py-3 text-sm text-gray-200 focus:outline-none focus:border-gold">
+                            <option value="Carbon Black Alcantara">Carbon Black Alcantara & Yellow Stitching</option>
+                            <option value="Truffle Brown Leather">Exquisite Truffle Brown Full Leather</option>
+                            <option value="Bespoke Bordeaux Red">Bespoke Bordeaux Red & Carbon</option>
+                            <option value="Pure Arctic White">Pure Arctic White Executive Leather</option>
+                        </select>
+                    </div>
+
+                    <!-- Action Button -->
+                    <button onclick="orderCustomBuild()" class="w-full py-4 rounded-xl gold-btn font-semibold text-sm uppercase tracking-wider shadow-lg shadow-gold/20 flex items-center justify-center space-x-2">
+                        <i class="fab fa-whatsapp text-lg"></i>
+                        <span>Submit Custom Build Order</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience / Lounge Section -->
+    <section id="experience" class="py-28 bg-dark/50 border-t border-dark-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="text-gold text-xs font-semibold uppercase tracking-[0.2em] mb-3 block">Private Access</span>
+                    <h2 class="font-serif text-3xl sm:text-5xl font-bold mb-6">The KASH VIP Lounge Experience</h2>
+                    <p class="text-gray-400 font-light leading-relaxed mb-6">
+                        Acquiring a hyper-car or ultra-luxury automobile is an intimate journey. Our private consultation lounges in Islamabad, Lahore, and Dubai offer complete discretion, champagne service, and virtual holographic vehicle previews.
+                    </p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center space-x-3 text-gray-300">
+                            <i class="fas fa-check text-gold"></i>
+                            <span>Private armored transport & airport pickup</span>
+                        </li>
+                        <li class="flex items-center space-x-3 text-gray-300">
+                            <i class="fas fa-check text-gold"></i>
+                            <span>Direct factory allocation & custom VIN numbering</span>
+                        </li>
+                        <li class="flex items-center space-x-3 text-gray-300">
+                            <i class="fas fa-check text-gold"></i>
+                            <span>Global white-glove enclosed shipping</span>
+                        </li>
+                    </ul>
+                    <button onclick="openWhatsAppInquiry('VIP Lounge Private Appointment')" class="px-8 py-4 rounded-full gold-btn font-semibold text-sm tracking-wider uppercase">
+                        Book Private Viewing
+                    </button>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-4">
+                        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=800" alt="Showroom Detail" class="w-full h-64 object-cover rounded-2xl border border-dark-border">
+                        <img src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&q=80&w=800" alt="Luxury Interior" class="w-full h-48 object-cover rounded-2xl border border-dark-border">
+                    </div>
+                    <div class="space-y-4 pt-8">
+                        <img src="https://images.unsplash.com/photo-1555353540-64580b51c258?auto=format&fit=crop&q=80&w=800" alt="Private Lounge" class="w-full h-48 object-cover rounded-2xl border border-dark-border">
+                        <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&q=80&w=800" alt="Supercar Key" class="w-full h-64 object-cover rounded-2xl border border-dark-border">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Concierge Section -->
+    <section id="contact" class="py-28 bg-dark relative border-t border-dark-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <span class="text-gold text-xs font-semibold uppercase tracking-[0.2em] mb-3 block">Direct Inquiry</span>
+                    <h2 class="font-serif text-3xl sm:text-5xl font-bold mb-6">Connect With Concierge</h2>
+                    <p class="text-gray-400 font-light mb-8">
+                        Have a specific vehicle in mind or require customized import assistance? Our senior directors are available instantly via WhatsApp or direct dispatch.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold text-xl flex-shrink-0">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">Direct WhatsApp Concierge</h4>
+                                <p class="text-gray-400 text-sm mt-1">+92 327 5763974</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold text-xl flex-shrink-0">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">Showroom Headquarters</h4>
+                                <p class="text-gray-400 text-sm mt-1">F-7 Markaz, Islamabad & Gulberg III, Lahore, Pakistan</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold text-xl flex-shrink-0">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">Electronic Mail</h4>
+                                <p class="text-gray-400 text-sm mt-1">concierge@kashautomotive.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Inquiry Form -->
+                <div class="bg-dark-card border border-dark-border rounded-3xl p-8 shadow-2xl">
+                    <h3 class="font-serif text-2xl font-bold mb-6">Request Private Callback</h3>
+                    <form onsubmit="handleInquiryForm(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Your Full Name</label>
+                            <input type="text" id="inquiryName" required class="w-full bg-dark border border-dark-border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-gold" placeholder="Prince/Mr. Collector">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">WhatsApp / Phone Number</label>
+                            <input type="tel" id="inquiryPhone" required class="w-full bg-dark border border-dark-border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-gold" placeholder="+92 300 0000000">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Vehicle of Interest</label>
+                            <select id="inquiryVehicle" class="w-full bg-dark border border-dark-border rounded-xl px-4 py-3 text-sm text-gray-300 focus:outline-none focus:border-gold">
+                                <option value="Porsche 911 GT3 RS">Porsche 911 GT3 RS</option>
+                                <option value="BMW M4 Competition">BMW M4 Competition</option>
+                                <option value="Mercedes-AMG G63">Mercedes-AMG G63</option>
+                                <option value="Audi RS7 Sportback">Audi RS7 Sportback</option>
+                                <option value="Rolls-Royce Ghost">Rolls-Royce Ghost</option>
+                                <option value="Custom Bespoke Commission">Custom Bespoke Commission</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Private Notes</label>
+                            <textarea id="inquiryNotes" rows="3" class="w-full bg-dark border border-dark-border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-gold" placeholder="Mention shipping destination or custom specs..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-4 rounded-xl gold-btn font-semibold text-sm uppercase tracking-wider shadow-lg shadow-gold/20 flex items-center justify-center space-x-2">
+                            <i class="fab fa-whatsapp text-lg"></i>
+                            <span>Send Instant WhatsApp Inquiry</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide-out WhatsApp Inquiry Drawer / Modal -->
+    <div id="whatsappDrawer" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-end transition-opacity duration-300">
+        <div class="bg-dark-card border-l border-dark-border w-full max-w-md h-full flex flex-col justify-between p-6 sm:p-8 transform transition-transform duration-300">
+            <div>
+                <div class="flex items-center justify-between pb-6 border-b border-dark-border">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-emerald-600 flex items-center justify-center text-white text-lg">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-white">KASH WhatsApp Concierge</h4>
+                            <p class="text-xs text-emerald-400 font-medium flex items-center">
+                                <span class="w-2 h-2 rounded-full bg-emerald-500 inline-block mr-1.5 animate-pulse"></span> Online & Ready
+                            </p>
+                        </div>
+                    </div>
+                    <button onclick="closeWhatsAppDrawer()" class="text-gray-400 hover:text-white p-2">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+
+                <div class="py-6 space-y-4">
+                    <div class="bg-dark p-4 rounded-2xl border border-dark-border">
+                        <p class="text-xs text-gray-400">You are inquiring about:</p>
+                        <p id="drawerSubject" class="text-sm font-bold text-gold mt-1">Porsche 911 GT3 RS</p>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Your Message to Concierge</label>
+                        <textarea id="drawerMessageText" rows="4" class="w-full bg-dark border border-dark-border rounded-xl p-4 text-sm text-white focus:outline-none focus:border-gold" placeholder="Hello KASH Automotive, I would like to inquire about availability, export formalities, and pricing..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-3 pb-6">
+                <button onclick="sendToWhatsApp()" class="w-full py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm uppercase tracking-wider flex items-center justify-center space-x-2 transition-all shadow-lg shadow-emerald-900/30">
+                    <i class="fab fa-whatsapp text-lg"></i>
+                    <span>Launch WhatsApp Chat</span>
+                </button>
+                <p class="text-center text-[10px] text-gray-500">Directly routing to +92 327 5763974</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark-card border-t border-dark-border py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="text-center md:text-left">
+                <span class="font-serif text-xl font-bold tracking-widest gold-gradient">KASH AUTOMOTIVE</span>
+                <p class="text-xs text-gray-500 mt-1">The Ultimate Destination for Luxury & Exotic Automobiles.</p>
+            </div>
+            <div class="flex items-center space-x-6 text-sm text-gray-400">
+                <a href="#showroom" class="hover:text-gold transition-colors">Showroom</a>
+                <a href="#inventory" class="hover:text-gold transition-colors">Collection</a>
+                <a href="#configurator" class="hover:text-gold transition-colors">Bespoke</a>
+                <a href="#contact" class="hover:text-gold transition-colors">Contact</a>
+            </div>
+            <div class="text-xs text-gray-600 text-center md:text-right">
+                &copy; 2026 KASH Automotive. All rights reserved. Target: +923275763974.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Inventory Data with high-res Unsplash car images
+        const inventoryData = [
+            {
+                id: 1,
+                name: "Porsche 911 GT3 RS",
+                category: "supercar",
+                price: "$345,000",
+                power: "518 HP",
+                accel: "3.0s (0-100)",
+                topSpeed: "296 km/h",
+                image: "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&q=80&w=1000",
+                badge: "Track Ready"
+            },
+            {
+                id: 2,
+                name: "BMW M4 Competition",
+                category: "supercar",
+                price: "$125,000",
+                power: "503 HP",
+                accel: "3.4s (0-100)",
+                topSpeed: "290 km/h",
+                image: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&q=80&w=1000",
+                badge: "Frozen Dark Grey"
+            },
+            {
+                id: 3,
+                name: "Mercedes-AMG G63",
+                category: "suv",
+                price: "$220,000",
+                power: "577 HP",
+                accel: "4.5s (0-100)",
+                topSpeed: "220 km/h",
+                image: "https://images.unsplash.com/photo-1520031441872-265e4ff70366?auto=format&fit=crop&q=80&w=1000",
+                badge: "Night Package"
+            },
+            {
+                id: 4,
+                name: "Audi RS7 Sportback",
+                category: "sedan",
+                price: "$142,000",
+                power: "591 HP",
+                accel: "3.5s (0-100)",
+                topSpeed: "305 km/h",
+                image: "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&q=80&w=1000",
+                badge: "V8 Biturbo"
+            },
+            {
+                id: 5,
+                name: "Rolls-Royce Ghost",
+                category: "sedan",
+                price: "$355,000",
+                power: "563 HP",
+                accel: "4.8s (0-100)",
+                topSpeed: "250 km/h",
+                image: "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&q=80&w=1000",
+                badge: "Starlight Headliner"
+            },
+            {
+                id: 6,
+                name: "Lamborghini Urus Performante",
+                category: "suv",
+                price: "$265,000",
+                power: "657 HP",
+                accel: "3.3s (0-100)",
+                topSpeed: "306 km/h",
+                image: "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&q=80&w=1000",
+                badge: "Titanium Exhaust"
+            }
+        ];
+
+        // Render Inventory Grid
+        function renderInventory(filter = 'all') {
+            const grid = document.getElementById('inventory-grid');
+            grid.innerHTML = '';
+
+            const filtered = filter === 'all' ? inventoryData : inventoryData.filter(car => car.category === filter);
+
+            filtered.forEach(car => {
+                const card = document.createElement('div');
+                card.className = 'bg-dark-card border border-dark-border hover:border-gold/60 rounded-3xl overflow-hidden group transition-all duration-300 flex flex-col justify-between shadow-xl';
+                card.innerHTML = `
+                    <div class="relative h-64 overflow-hidden bg-black">
+                        <img src="${car.image}" alt="${car.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute top-4 left-4 bg-black/70 backdrop-blur-md px-3 py-1 rounded-full border border-gold/30 text-[10px] font-semibold text-gold tracking-widest uppercase">
+                            ${car.badge}
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-xl border border-dark-border text-sm font-bold text-white">
+                            ${car.price}
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-serif text-xl font-bold mb-4 text-white group-hover:text-gold transition-colors">${car.name}</h3>
+                            <div class="grid grid-cols-3 gap-2 py-3 border-y border-dark-border/60 mb-6 text-center">
+                                <div>
+                                    <div class="text-[10px] text-gray-500 uppercase tracking-wider">Power</div>
+                                    <div class="text-xs font-bold text-gray-300 mt-0.5">${car.power}</div>
+                                </div>
+                                <div>
+                                    <div class="text-[10px] text-gray-500 uppercase tracking-wider">0-100</div>
+                                    <div class="text-xs font-bold text-gray-300 mt-0.5">${car.accel}</div>
+                                </div>
+                                <div>
+                                    <div class="text-[10px] text-gray-500 uppercase tracking-wider">Top Speed</div>
+                                    <div class="text-xs font-bold text-gray-300 mt-0.5">${car.topSpeed}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <button onclick="openWhatsAppInquiry('${car.name} - Price: ${car.price}')" class="w-full py-3 rounded-xl bg-dark border border-dark-border hover:border-gold hover:bg-gold/10 text-xs font-semibold uppercase tracking-wider text-gray-200 hover:text-gold transition-all flex items-center justify-center space-x-2">
+                            <i class="fab fa-whatsapp text-emerald-400"></i>
+                            <span>Inquire via WhatsApp</span>
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Filter functionality
+        function filterInventory(category) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-gold', 'text-black');
+                btn.classList.add('text-gray-400');
+            });
+            const activeBtn = document.getElementById(`filter-${category}`);
+            activeBtn.classList.remove('text-gray-400');
+            activeBtn.classList.add('bg-gold', 'text-black');
+
+            renderInventory(category);
+        }
+
+        // Configurator state
+        let currentConfig = {
+            model: 'Porsche GT3 RS',
+            price: '$345,000',
+            image: 'https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&q=80&w=1200',
+            color: 'Guards Red',
+            interior: 'Carbon Black Alcantara'
+        };
+
+        function updateConfigModel(modelKey) {
+            document.querySelectorAll('.config-model-btn').forEach(btn => {
+                btn.classList.remove('border-gold', 'bg-gold/10');
+                btn.classList.add('border-dark-border', 'bg-dark');
+            });
+            const activeBtn = document.getElementById(`model-btn-${modelKey}`);
+            activeBtn.classList.remove('border-dark-border', 'bg-dark');
+            activeBtn.classList.add('border-gold', 'bg-gold/10');
+
+            if (modelKey === 'porsche') {
+                currentConfig.model = 'Porsche 911 GT3 RS';
+                currentConfig.price = '$345,000';
+                currentConfig.image = 'https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&q=80&w=1200';
+            } else if (modelKey === 'bmw') {
+                currentConfig.model = 'BMW M4 Competition';
+                currentConfig.price = '$125,000';
+                currentConfig.image = 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&q=80&w=1200';
+            } else if (modelKey === 'mercedes') {
+                currentConfig.model = 'Mercedes-AMG G63';
+                currentConfig.price = '$220,000';
+                currentConfig.image = 'https://images.unsplash.com/photo-1520031441872-265e4ff70366?auto=format&fit=crop&q=80&w=1200';
+            } else if (modelKey === 'audi') {
+                currentConfig.model = 'Audi RS7 Sportback';
+                currentConfig.price = '$142,000';
+                currentConfig.image = 'https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&q=80&w=1200';
+            }
+
+            document.getElementById('preview-model-badge').innerText = currentConfig.model;
+            document.getElementById('config-price').innerText = currentConfig.price;
+            document.getElementById('config-car-img').src = currentConfig.image;
+        }
+
+        function updateConfigColor(colorName, hex) {
+            currentConfig.color = colorName;
+            // Add slight visual feedback or animation on preview
+            const img = document.getElementById('config-car-img');
+            img.style.opacity = '0.5';
+            setTimeout(() => {
+                img.style.opacity = '1';
+            }, 300);
+        }
+
+        function orderCustomBuild() {
+            const interiorTrim = document.getElementById('config-interior').value;
+            const message = `Hello KASH Automotive, I would like to commission a custom build: Model: ${currentConfig.model}, Exterior Finish: ${currentConfig.color}, Interior: ${interiorTrim}. Estimated Base Price: ${currentConfig.price}. Please contact me regarding allocation.`;
+            openWhatsAppInquiryWithCustomMessage(message, `Bespoke Commission: ${currentConfig.model}`);
+        }
+
+        // WhatsApp Drawer Controller
+        function openWhatsAppInquiry(subject) {
+            const drawer = document.getElementById('whatsappDrawer');
+            document.getElementById('drawerSubject').innerText = subject;
+            document.getElementById('drawerMessageText').value = `Hello KASH Automotive Concierge, I am interested in ${subject}. Please share further specifications, availability, and private viewing details.`;
+            drawer.classList.remove('hidden');
+            drawer.classList.add('flex');
+        }
+
+        function openWhatsAppInquiryWithCustomMessage(customMsg, subject) {
+            const drawer = document.getElementById('whatsappDrawer');
+            document.getElementById('drawerSubject').innerText = subject;
+            document.getElementById('drawerMessageText').value = customMsg;
+            drawer.classList.remove('hidden');
+            drawer.classList.add('flex');
+        }
+
+        function closeWhatsAppDrawer() {
+            const drawer = document.getElementById('whatsappDrawer');
+            drawer.classList.remove('flex');
+            drawer.classList.add('hidden');
+        }
+
+        function sendToWhatsApp() {
+            const msg = document.getElementById('drawerMessageText').value;
+            const phone = "923275763974";
+            const encodedUrl = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+            window.open(encodedUrl, '_blank');
+        }
+
+        function handleInquiryForm(e) {
+            e.preventDefault();
+            const name = document.getElementById('inquiryName').value;
+            const phoneNum = document.getElementById('inquiryPhone').value;
+            const vehicle = document.getElementById('inquiryVehicle').value;
+            const notes = document.getElementById('inquiryNotes').value;
+
+            const msg = `Hello KASH Automotive, Callback Request:\nName: ${name}\nPhone: ${phoneNum}\nVehicle: ${vehicle}\nNotes: ${notes}`;
+            openWhatsAppInquiryWithCustomMessage(msg, `Callback Request: ${vehicle}`);
+        }
+
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Initialize on load
+        window.onload = function() {
+            renderInventory('all');
+        };
+    </script>
+</body>
+</html>
